@@ -139,10 +139,22 @@ function Airplane(name) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window/Global Object Binding: 
+          Any Global Object can be accessed as properties of the window object.
+
+
+    2. Implicit Binding:
+          It is applied when you invoke a function in an Object using the dot notation. 
+          And it will point to the object on the left side of the dot.
+
+    3. New binding:
+          When you use a constructor function, "this" refers to the specific instance 
+          of the object that is created and returned by the constructor function.
+
+    4. Explicit binding:
+          Whenever we use JavaScript's call or apply method, 'this' is explicitly defined.
+
+
   */
   
   
