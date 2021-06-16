@@ -39,15 +39,43 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
+ function Person(name, age) {
+    this.name = name;
+    this.age =age;
+    this.stomach = [];
+  }
+
+  Person.prototype.eat =function(edible){
+    if(this.stomach.length <= 10){
+      this.stomach.push(edible);
+    }
   }
  
- 
+  Person.prototype.poop = function(){
+    this.stomach = [];
+  }
 
-  
-  
-  
+  Person.prototype.toString = function(){
+    return `${this.name}, ${this.age}`;
+  }
+ 
+  const romy = new Person ('Romy', 29);
+  const bradly = new Person ('Bradly', 27);
+  const jordan = new Person ('Jordan', 24);
+
+  console.log(romy);
+  console.log(bradly);
+  console.log(jordan);
+
+  jordan.eat('tacos');
+  jordan.eat('sushi');
+  jordan.eat('pizza');
+  jordan.eat('burger');
+  jordan.eat('cake');
+  console.log(jordan.stomach);
+
+  jordan.poop();
+  console.log(jordan.stomach);
   
   /*
     TASK 2
@@ -63,10 +91,30 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(model, milesPerGallon) {
+   this.model= model;
+   this.milesPerGallon= milesPerGallon;
+   this.tank = 0;
+   this.odometer = 0;
   }
-  
+
+  Car.prototype.fill=function(gallons){
+    this.tank = this.tank += gallons;
+  }
+  Car.prototype.drive=function(distance,gallons){
+    this.odometer.push(distance);
+  }
+
+
+  const a3 = new Car ('2019A3', 29);
+  const a5 = new Car ('2019A5', 27);
+  const s3 = new Car ('2019S3' ,25);
+  const q5 = new Car ('2019Q5' ,24);
+  console.log (a3);
+  console.log (a5);
+  console.log (s3);
+  console.log (q5);
+
   
   /*
     TASK 3
@@ -75,9 +123,17 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ 
+  function Baby(name, age, favToys) {
+    Person.call(this, name, age);
+    this.favoriteToy = favToys;
   }
+
+  Baby.prototype = Object.create(Person.prototype);
+  Baby.prototype.play = function(){
+    return `Playing with ${this.favoriteToy}`;
+  }
+
  
   
   /* 
